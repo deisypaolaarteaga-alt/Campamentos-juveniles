@@ -160,9 +160,9 @@ export default function DashboardPage() {
 
       {/* Lista de campistas */}
       <div className="bg-white rounded-2xl shadow-card border border-border p-6">
-        <div className="flex items-center justify-between mb-5">
-          <h2 className="font-montserrat font-bold text-lg" style={{ color: '#1A1A2E' }}>
-            Campistas del Bosque
+        <div className="flex items-center justify-between mb-5 gap-3">
+          <h2 className="font-montserrat font-bold text-lg min-w-0 truncate" style={{ color: '#1A1A2E' }}>
+            Campistas
             {!loadingPersonas && (
               <span className="ml-2 text-base font-normal" style={{ color: '#6B7280' }}>
                 ({personas.length})
@@ -171,7 +171,7 @@ export default function DashboardPage() {
           </h2>
           <Link
             href="/personas/nueva"
-            className="btn-cj-primary flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold"
+            className="btn-cj-primary flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold flex-shrink-0 whitespace-nowrap"
           >
             <UserPlus className="w-4 h-4" />
             Nuevo
@@ -233,7 +233,7 @@ export default function DashboardPage() {
               return (
                 <div
                   key={persona.id}
-                  className="flex items-center gap-3 p-4 rounded-2xl border transition-shadow hover:shadow-card-hover"
+                  className="flex items-center gap-3 p-4 rounded-2xl border card-hover"
                   style={{ borderColor: '#E0D9D0', backgroundColor: '#FAFAF9' }}
                 >
                   {/* Foto / inicial */}

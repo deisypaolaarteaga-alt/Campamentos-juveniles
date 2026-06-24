@@ -130,12 +130,13 @@ export default function AsistenciasPage() {
           </p>
           <button
             onClick={marcarTodos}
-            className="text-xs font-semibold px-3 py-1.5 rounded-lg transition-colors"
+            className="text-xs font-semibold px-3 py-1.5 rounded-lg transition-all active:scale-95 whitespace-nowrap"
             style={{ color: '#C8102E', backgroundColor: 'rgba(200,16,46,0.08)' }}
             onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(200,16,46,0.15)'; }}
             onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = 'rgba(200,16,46,0.08)'; }}
           >
-            Marcar todos como asistió
+            <span className="sm:hidden">✓ Todos</span>
+            <span className="hidden sm:inline">Marcar todos como asistió</span>
           </button>
         </div>
       </div>

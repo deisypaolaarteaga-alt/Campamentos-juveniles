@@ -4,49 +4,73 @@
 
 @layer base {
   :root {
-    /* ── Campamentos Juveniles Colombia ──────────────────────────────
-       Inspiración: Contemporary Home + acento ámbar
-       Jungle deep teal × coral brick red × golden amber
-    ──────────────────────────────────────────────────────────────── */
-    --fondo: #F4F1EE;           /* pergamino cálido — como mapa de explorador  */
+    --fondo: #F4F1EE;
     --fondo-card: #FFFFFF;
-    --sidebar: #0D2B2B;         /* teal selva profunda                          */
-    --sidebar-hover: #163838;   /* teal selva ligeramente más claro              */
-    --sidebar-activo: #B83A2E;  /* rojo coral ladrillo — marca el ítem activo   */
-    --primario: #B83A2E;        /* rojo coral — acción principal                 */
-    --primario-hover: #972E24;  /* versión más oscura para hover                 */
-    --acento: #C67E1A;          /* ámbar dorado — sol colombiano                 */
-    --texto: #0F1E1E;           /* negro teal orgánico — no negro puro           */
-    --texto-suave: #4A6060;     /* teal desaturado para texto secundario         */
-    --borde: #D8D1C8;           /* piedra caliza cálida                          */
+    --sidebar: #0D2B2B;
+    --sidebar-hover: #163838;
+    --sidebar-activo: #B83A2E;
+    --primario: #B83A2E;
+    --primario-hover: #972E24;
+    --acento: #C67E1A;
+    --texto: #0F1E1E;
+    --texto-suave: #4A6060;
+    --borde: #D8D1C8;
 
-    /* Tokens Tailwind (HSL para compatibilidad con clases bg-background, etc.) */
-    --background: 30 22% 94%;         /* #F4F1EE */
-    --foreground: 180 33% 9%;         /* #0F1E1E */
+    --background: 30 22% 94%;
+    --foreground: 180 33% 9%;
     --card: 0 0% 100%;
     --card-foreground: 180 33% 9%;
     --popover: 0 0% 100%;
     --popover-foreground: 180 33% 9%;
-    --primary: 5 61% 45%;             /* #B83A2E */
+    --primary: 5 61% 45%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 180 50% 11%;         /* #0D2B2B — sidebar como color secundario */
+    --secondary: 180 50% 11%;
     --secondary-foreground: 0 0% 100%;
     --muted: 36 16% 88%;
-    --muted-foreground: 180 13% 34%;  /* #4A6060 */
-    --accent: 35 77% 44%;             /* #C67E1A — ámbar dorado */
+    --muted-foreground: 180 13% 34%;
+    --accent: 35 77% 44%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --border: 35 14% 82%;             /* #D8D1C8 */
+    --border: 35 14% 82%;
     --input: 35 14% 82%;
-    --ring: 5 61% 45%;                /* rojo coral para focus ring */
+    --ring: 5 61% 45%;
     --radius: 0.875rem;
+  }
+
+  .dark {
+    --fondo: #1a1714;
+    --fondo-card: #211e1b;
+    --texto: #f0ede8;
+    --texto-suave: #9ca3af;
+    --borde: #2e2925;
+
+    --background: 20 14% 10%;
+    --foreground: 60 9% 98%;
+    --card: 20 14% 13%;
+    --card-foreground: 60 9% 98%;
+    --popover: 20 14% 13%;
+    --popover-foreground: 60 9% 98%;
+    --primary: 5 61% 45%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 180 50% 11%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 20 14% 16%;
+    --muted-foreground: 24 5% 60%;
+    --accent: 35 60% 38%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 20 14% 20%;
+    --input: 20 14% 20%;
+    --ring: 5 61% 45%;
   }
 }
 
 @layer base {
   * {
     @apply border-border;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
   }
   body {
     background-color: var(--fondo);
@@ -55,16 +79,14 @@
   }
 }
 
-/* Scrollbar — teal selva sutil */
+/* Scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
   background: rgba(13, 43, 43, 0.22);
   border-radius: 9999px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(13, 43, 43, 0.42);
-}
+::-webkit-scrollbar-thumb:hover { background: rgba(13, 43, 43, 0.42); }
 
 /* Loading skeleton */
 @keyframes shimmer {
@@ -81,29 +103,47 @@
   background-size: 200% 100%;
   animation: shimmer 1.8s infinite;
 }
+.dark .skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(40,35,30,0.8) 25%,
+    rgba(55,48,42,0.9) 50%,
+    rgba(40,35,30,0.8) 75%
+  );
+  background-size: 200% 100%;
+}
 
 /* Botón principal CJ */
 .btn-cj-primary {
   background-color: var(--primario);
   color: #fff;
-  transition: background-color 180ms, transform 180ms;
+  transition: background-color 0.2s ease, transform 0.15s ease;
 }
-.btn-cj-primary:hover {
-  background-color: var(--primario-hover);
-  transform: scale(1.02);
-}
-.btn-cj-primary:disabled {
-  opacity: 0.55;
-  transform: none;
-}
+.btn-cj-primary:hover  { background-color: var(--primario-hover); transform: scale(1.02); }
+.btn-cj-primary:active { transform: scale(0.95); }
+.btn-cj-primary:disabled { opacity: 0.55; transform: none; }
 
 /* Botón acento ámbar */
 .btn-cj-accent {
   background-color: var(--acento);
   color: #fff;
-  transition: background-color 180ms, transform 180ms;
+  transition: background-color 0.2s ease, transform 0.15s ease;
 }
-.btn-cj-accent:hover {
-  background-color: #a8680f;
-  transform: scale(1.02);
+.btn-cj-accent:hover  { background-color: #a8680f; transform: scale(1.02); }
+.btn-cj-accent:active { transform: scale(0.95); }
+
+/* Focus ring rojo suave en inputs */
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(184, 58, 46, 0.25);
+  border-color: #B83A2E !important;
+}
+
+/* Cards desktop hover */
+.card-hover {
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.card-hover:hover {
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
 }
