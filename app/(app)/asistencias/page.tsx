@@ -264,8 +264,7 @@ export default function AsistenciasPage() {
           <button
             onClick={guardar}
             disabled={guardando}
-            className="btn-cj-primary flex items-center gap-3 px-6 py-3.5 rounded-2xl text-sm font-bold shadow-lg disabled:opacity-60"
-            style={{ minWidth: 260 }}
+            className="btn-cj-primary flex items-center gap-3 px-6 py-3.5 rounded-2xl text-sm font-bold shadow-lg disabled:opacity-60 w-[min(280px,calc(100vw-48px))]"
           >
             <Save className="w-4 h-4" />
             {guardando

@@ -81,7 +81,7 @@ export default function DashboardPage() {
 
       {/* Card identidad del Bosque */}
       <div
-        className="rounded-2xl p-8 flex items-center gap-6"
+        className="rounded-2xl p-5 sm:p-8 flex items-center gap-4 sm:gap-6"
         style={{ background: 'linear-gradient(135deg, #0D2B2B 0%, #163838 100%)', boxShadow: '0 4px 24px rgba(13,43,43,0.35)' }}
       >
         {/* Avatar 80px */}
@@ -91,13 +91,13 @@ export default function DashboardPage() {
             alt={bosque.nombre}
             width={80}
             height={80}
-            className="rounded-full object-cover flex-shrink-0"
-            style={{ width: 80, height: 80, border: '3px solid rgba(255,255,255,0.25)' }}
+            className="rounded-full object-cover flex-shrink-0 w-14 h-14 sm:w-20 sm:h-20"
+            style={{ border: '3px solid rgba(255,255,255,0.25)' }}
             unoptimized
           />
         ) : (
           <div
-            className="w-20 h-20 rounded-full flex items-center justify-center text-3xl font-bold flex-shrink-0"
+            className="w-14 h-14 sm:w-20 sm:h-20 rounded-full flex items-center justify-center text-2xl sm:text-3xl font-bold flex-shrink-0"
             style={{ backgroundColor: '#B83A2E', color: '#FFFFFF', border: '3px solid rgba(255,255,255,0.25)' }}
           >
             {bosque ? bosque.nombre.charAt(0).toUpperCase() : 'B'}
@@ -106,7 +106,7 @@ export default function DashboardPage() {
 
         {/* Texto */}
         <div className="min-w-0">
-          <h2 className="font-montserrat font-bold leading-tight text-white truncate" style={{ fontSize: 28 }}>
+          <h2 className="font-montserrat font-bold leading-tight text-white truncate text-xl sm:text-[28px]">
             {bosque ? bosque.nombre : 'Mi Bosque'}
           </h2>
           <p className="text-base mt-2" style={{ color: 'rgba(255,255,255,0.55)' }}>
