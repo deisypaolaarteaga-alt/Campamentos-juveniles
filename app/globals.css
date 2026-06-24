@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* ── Campamentos Juveniles Colombia ──────────────────────────────
+       Inspiración: Contemporary Home + acento ámbar
+       Jungle deep teal × coral brick red × golden amber
+    ──────────────────────────────────────────────────────────────── */
+    --fondo: #F4F1EE;           /* pergamino cálido — como mapa de explorador  */
+    --fondo-card: #FFFFFF;
+    --sidebar: #0D2B2B;         /* teal selva profunda                          */
+    --sidebar-hover: #163838;   /* teal selva ligeramente más claro              */
+    --sidebar-activo: #B83A2E;  /* rojo coral ladrillo — marca el ítem activo   */
+    --primario: #B83A2E;        /* rojo coral — acción principal                 */
+    --primario-hover: #972E24;  /* versión más oscura para hover                 */
+    --acento: #C67E1A;          /* ámbar dorado — sol colombiano                 */
+    --texto: #0F1E1E;           /* negro teal orgánico — no negro puro           */
+    --texto-suave: #4A6060;     /* teal desaturado para texto secundario         */
+    --borde: #D8D1C8;           /* piedra caliza cálida                          */
+
+    /* Tokens Tailwind (HSL para compatibilidad con clases bg-background, etc.) */
+    --background: 30 22% 94%;         /* #F4F1EE */
+    --foreground: 180 33% 9%;         /* #0F1E1E */
+    --card: 0 0% 100%;
+    --card-foreground: 180 33% 9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 180 33% 9%;
+    --primary: 5 61% 45%;             /* #B83A2E */
+    --primary-foreground: 0 0% 100%;
+    --secondary: 180 50% 11%;         /* #0D2B2B — sidebar como color secundario */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 36 16% 88%;
+    --muted-foreground: 180 13% 34%;  /* #4A6060 */
+    --accent: 35 77% 44%;             /* #C67E1A — ámbar dorado */
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 35 14% 82%;             /* #D8D1C8 */
+    --input: 35 14% 82%;
+    --ring: 5 61% 45%;                /* rojo coral para focus ring */
+    --radius: 0.875rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    background-color: var(--fondo);
+    color: var(--texto);
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Scrollbar — teal selva sutil */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(13, 43, 43, 0.22);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(13, 43, 43, 0.42);
+}
+
+/* Loading skeleton */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(216,209,200,0.6) 25%,
+    rgba(238,233,226,0.9) 50%,
+    rgba(216,209,200,0.6) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.8s infinite;
+}
+
+/* Botón principal CJ */
+.btn-cj-primary {
+  background-color: var(--primario);
+  color: #fff;
+  transition: background-color 180ms, transform 180ms;
+}
+.btn-cj-primary:hover {
+  background-color: var(--primario-hover);
+  transform: scale(1.02);
+}
+.btn-cj-primary:disabled {
+  opacity: 0.55;
+  transform: none;
+}
+
+/* Botón acento ámbar */
+.btn-cj-accent {
+  background-color: var(--acento);
+  color: #fff;
+  transition: background-color 180ms, transform 180ms;
+}
+.btn-cj-accent:hover {
+  background-color: #a8680f;
+  transform: scale(1.02);
+}
