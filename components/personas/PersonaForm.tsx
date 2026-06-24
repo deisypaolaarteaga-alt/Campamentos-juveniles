@@ -89,7 +89,7 @@ export function PersonaForm({ persona, onSubmit, loading }: PersonaFormProps) {
   const labelClass = 'block text-sm font-medium mb-1';
 
   return (
-    <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-4 max-w-2xl mx-auto">
+    <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-4 max-w-2xl mx-auto pb-32 md:pb-4">
 
       {/* Foto de perfil */}
       <div className="bg-white rounded-2xl shadow-card border border-border p-5">
@@ -294,25 +294,25 @@ export function PersonaForm({ persona, onSubmit, loading }: PersonaFormProps) {
         )}
       </div>
 
-      {/* Botones */}
-      <div className="flex gap-3 justify-end pb-4">
-        <button
-          type="button"
-          onClick={() => router.back()}
-          className="px-4 py-2 rounded-xl border text-sm font-medium transition-colors"
-          style={{ borderColor: '#E0D9D0', color: '#1A1A2E' }}
-          onMouseEnter={e => { (e.currentTarget as HTMLElement).style.backgroundColor = '#F0EDE8'; }}
-          onMouseLeave={e => { (e.currentTarget as HTMLElement).style.backgroundColor = 'transparent'; }}
-        >
-          Cancelar
-        </button>
-        <button
-          type="submit"
-          disabled={loading}
-          className="btn-cj-primary px-5 py-2 rounded-xl text-sm font-semibold"
-        >
-          {loading ? 'Guardando...' : persona ? 'Guardar cambios' : 'Registrar campista'}
-        </button>
+      {/* Botones — fijos abajo en móvil, normales en desktop */}
+      <div className="fixed bottom-0 left-0 right-0 p-4 bg-background border-t border-border z-20 md:relative md:bg-transparent md:border-0 md:p-0 md:flex md:justify-end mobile-nav">
+        <div className="flex gap-3">
+          <button
+            type="button"
+            onClick={() => router.back()}
+            className="flex-1 md:flex-none px-4 py-2.5 rounded-xl border text-sm font-medium transition-all active:scale-95"
+            style={{ borderColor: '#E0D9D0', color: '#1A1A2E' }}
+          >
+            Cancelar
+          </button>
+          <button
+            type="submit"
+            disabled={loading}
+            className="flex-1 md:flex-none btn-cj-primary px-5 py-2.5 rounded-xl text-sm font-semibold"
+          >
+            {loading ? 'Guardando...' : persona ? 'Guardar cambios' : 'Registrar campista'}
+          </button>
+        </div>
       </div>
     </form>
   );

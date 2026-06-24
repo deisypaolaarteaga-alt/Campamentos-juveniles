@@ -16,7 +16,7 @@ export function MobileNav() {
 
   return (
     <nav
-      className="fixed bottom-0 left-0 right-0 z-40 lg:hidden"
+      className="fixed bottom-0 left-0 right-0 z-40 lg:hidden mobile-nav"
       style={{
         height: 64,
         backgroundColor: '#FFFFFF',
