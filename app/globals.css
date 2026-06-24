@@ -70,15 +70,16 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
     overflow-x: clip;
+    overscroll-behavior-x: none;
   }
   html, body {
     overflow-x: hidden;
     max-width: 100vw;
     width: 100%;
+    overscroll-behavior-x: none;
   }
-  img, video, iframe, svg {
+  img, video, iframe {
     max-width: 100%;
   }
   .mobile-nav {

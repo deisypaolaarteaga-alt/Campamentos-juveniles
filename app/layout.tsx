@@ -31,7 +31,9 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} ${montserrat.variable} font-sans`}>
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
-          {children}
+          <div id="app-root" style={{ overflowX: 'hidden', width: '100%', position: 'relative' }}>
+            {children}
+          </div>
           <Toaster richColors position="top-right" />
         </ThemeProvider>
       </body>
