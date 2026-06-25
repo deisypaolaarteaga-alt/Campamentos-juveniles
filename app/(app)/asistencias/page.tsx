@@ -260,7 +260,7 @@ export default function AsistenciasPage() {
 
       {/* Botón flotante */}
       {hayCambios && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50">
+        <div className="fixed bottom-16 lg:bottom-6 left-1/2 -translate-x-1/2 z-50">
           <button
             onClick={guardar}
             disabled={guardando}
