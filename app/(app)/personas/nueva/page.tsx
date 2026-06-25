@@ -16,11 +16,17 @@ export default function NuevoCampistaPage() {
     setLoading(true);
     try {
       // Paso 1: crear persona sin fotos para obtener el ID
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user?.id) {
+        toast.error('Tu sesión ha expirado. Inicia sesión de nuevo.');
+        return false;
+      }
+
       const { foto_url: _fu, foto_documento_url: _fdu, ...baseData } = data;
 
       const { data: nueva, error: insertError } = await supabase
         .from('personas')
-        .insert([baseData])
+        .insert([{ ...baseData, user_id: user.id }])
         .select()
         .single();
 
