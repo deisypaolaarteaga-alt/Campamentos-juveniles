@@ -105,9 +105,12 @@ input, textarea, select {
   max-width: 100%;
 }
 
-/* iOS Safari: input[type="date"] ignora width/max-width del padre si no se fuerza
-   display:block + min-width:0 explícitamente. */
+/* iOS Safari: -webkit-appearance añade un ícono de calendario nativo (~26px) fuera
+   del width declarado, haciendo que el input desborde su contenedor. appearance:none
+   lo elimina; el date picker nativo sigue funcionando (lo dispara type="date"). */
 input[type="date"] {
+  -webkit-appearance: none;
+  appearance: none;
   display: block;
   width: 100%;
   max-width: 100%;
