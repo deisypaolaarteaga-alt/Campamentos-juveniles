@@ -105,6 +105,15 @@ input, textarea, select {
   max-width: 100%;
 }
 
+/* iOS Safari: input[type="date"] ignora width/max-width del padre si no se fuerza
+   display:block + min-width:0 explícitamente. */
+input[type="date"] {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }

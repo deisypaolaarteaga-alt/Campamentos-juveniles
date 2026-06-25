@@ -137,14 +137,14 @@ export function PersonaForm({ persona, onSubmit, loading }: PersonaFormProps) {
             )}
           </div>
 
-          <div className="min-w-0">
+          <div className="min-w-0 overflow-hidden">
             <label className={labelClass}>
               Fecha de nacimiento
               {edad !== null && (
                 <span className="font-normal ml-1" style={{ color: '#6B7280' }}>({edad} años)</span>
               )}
             </label>
-            <input type="date" {...register('fecha_nacimiento')} className={inputClass} style={inputStyle} />
+            <input type="date" {...register('fecha_nacimiento')} autoComplete="off" className={inputClass} style={inputStyle} />
           </div>
 
           <div>
