@@ -68,7 +68,10 @@ No hay archivos de migración en el repo — el esquema se aplica manualmente en
 | `eventos` | Definido en BD pero sin UI implementada |
 | `configuracion` | Pares clave/valor JSONB |
 
-**RLS:** `bosque` tiene `user_id` y política RLS activa (`usuario_ve_su_bosque`). `personas` y `asistencias` necesitan políticas similares — pendiente de aplicar en Supabase SQL Editor.
+**RLS:** Todas las tablas tienen RLS activo. Políticas aplicadas en Supabase SQL Editor el 2026-06-24:
+- `bosque`: política `usuario_ve_su_bosque` (SELECT, `auth.uid() = user_id`)
+- `personas`: 4 políticas (`usuario_ve/crea/actualiza/elimina_sus_personas`) — filtran por `auth.uid() = user_id` en SELECT/UPDATE/DELETE y `WITH CHECK` en INSERT/UPDATE
+- `asistencias`: 4 políticas (`usuario_ve/crea/actualiza/elimina_sus_asistencias`) — filtran vía `EXISTS (SELECT 1 FROM personas WHERE personas.id = persona_id AND personas.user_id = auth.uid())` porque `asistencias` no tiene `user_id` directo
 
 Storage: bucket `fotos-perfil` (debe existir como público). `lib/utils/subirFoto.ts` maneja la subida.
 

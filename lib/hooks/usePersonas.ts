@@ -32,9 +32,13 @@ export function usePersonas(options?: { estado?: string; nivel?: string }) {
   const crearPersona = async (data: PersonaFormData): Promise<Persona | null> => {
     try {
       const { data: { user } } = await supabase.auth.getUser();
+      if (!user?.id) {
+        toast.error('Tu sesión ha expirado. Inicia sesión de nuevo.');
+        return null;
+      }
       const { data: nueva, error: err } = await supabase
         .from('personas')
-        .insert([{ ...data, user_id: user?.id ?? null }])
+        .insert([{ ...data, user_id: user.id }])
         .select()
         .single();
       if (err) throw err;
