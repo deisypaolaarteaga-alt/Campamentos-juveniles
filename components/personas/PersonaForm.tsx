@@ -145,7 +145,7 @@ export function PersonaForm({ persona, onSubmit, loading }: PersonaFormProps) {
               )}
             </label>
             <div className="relative">
-              <input type="date" {...register('fecha_nacimiento')} autoComplete="off" className={cn(inputClass, 'pr-10')} style={inputStyle} />
+              <input type="date" {...register('fecha_nacimiento')} autoComplete="off" className={cn(inputClass, 'pr-10 min-h-[38px]')} style={inputStyle} />
               {fechaNacimiento ? (
                 <button
                   type="button"
