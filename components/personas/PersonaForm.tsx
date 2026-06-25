@@ -89,7 +89,7 @@ export function PersonaForm({ persona, onSubmit, loading }: PersonaFormProps) {
   const labelClass = 'block text-sm font-medium mb-1';
 
   return (
-    <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-4 max-w-2xl mx-auto pb-32 md:pb-4">
+    <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-4 max-w-2xl mx-auto pb-40 md:pb-4">
 
       {/* Foto de perfil */}
       <div className="bg-white rounded-2xl shadow-card border border-border p-5">
@@ -309,7 +309,7 @@ export function PersonaForm({ persona, onSubmit, loading }: PersonaFormProps) {
       </div>
 
       {/* Botones — fijos abajo en móvil, normales en desktop */}
-      <div className="fixed bottom-0 left-0 right-0 p-4 bg-background border-t border-border z-20 md:relative md:bg-transparent md:border-0 md:p-0 md:flex md:justify-end mobile-nav">
+      <div className="fixed bottom-16 left-0 right-0 p-4 bg-background border-t border-border z-20 md:relative md:bottom-auto md:bg-transparent md:border-0 md:p-0 md:flex md:justify-end">
         <div className="flex gap-3">
           <button
             type="button"
