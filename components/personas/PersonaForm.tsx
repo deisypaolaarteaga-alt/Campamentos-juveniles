@@ -37,6 +37,18 @@ export function PersonaForm({ persona, onSubmit, loading }: PersonaFormProps) {
   const [edad, setEdad] = useState<number | null>(null);
   const [fotoFile, setFotoFile]       = useState<File | null>(null);
   const [fotoDocFile, setFotoDocFile] = useState<File | null>(null);
+  const [overflowLog, setOverflowLog] = useState<string[]>([]);
+
+  useEffect(() => {
+    const resultados: string[] = [];
+    document.querySelectorAll('*').forEach(el => {
+      if (el.scrollWidth > el.clientWidth + 1) {
+        const clase = typeof el.className === 'string' ? el.className.slice(0, 80) : '';
+        resultados.push(`${el.tagName} scroll=${el.scrollWidth} client=${el.clientWidth} diff=+${el.scrollWidth - el.clientWidth} | "${clase}"`);
+      }
+    });
+    setOverflowLog(resultados.length > 0 ? resultados : ['Sin overflow detectado']);
+  }, []);
 
   const { register, handleSubmit, watch, setValue, formState: { errors } } = useForm<PersonaFormData>({
     resolver: zodResolver(personaSchema),
@@ -90,6 +102,13 @@ export function PersonaForm({ persona, onSubmit, loading }: PersonaFormProps) {
 
   return (
     <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-4 max-w-2xl mx-auto pb-32 md:pb-4">
+
+      {/* DIAGNÓSTICO TEMPORAL — borrar después */}
+      {overflowLog.length > 0 && (
+        <pre style={{ fontSize: 9, background: '#ffff00', color: '#000', padding: 8, borderRadius: 8, overflowX: 'auto', whiteSpace: 'pre-wrap', wordBreak: 'break-all', lineHeight: 1.4 }}>
+          {overflowLog.join('\n')}
+        </pre>
+      )}
 
       {/* Foto de perfil */}
       <div className="bg-white rounded-2xl shadow-card border border-border p-5">
