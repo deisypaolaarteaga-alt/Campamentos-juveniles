@@ -117,6 +117,13 @@ input[type="date"] {
   min-width: 0;
 }
 
+/* Chrome/Edge desktop: el ::-webkit-calendar-picker-indicator es un pseudo-elemento
+   independiente que appearance:none no oculta. Se oculta explícitamente porque el
+   ícono custom de lucide-react ya cumple esa función visual. */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }

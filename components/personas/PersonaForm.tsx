@@ -137,7 +137,7 @@ export function PersonaForm({ persona, onSubmit, loading }: PersonaFormProps) {
             )}
           </div>
 
-          <div className="min-w-0 overflow-hidden">
+          <div className="min-w-0">
             <label className={labelClass}>
               Fecha de nacimiento
               {edad !== null && (
