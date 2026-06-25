@@ -9,7 +9,7 @@ import { calcularEdad } from '@/lib/utils/calcularEdad';
 import { NIVEL_COLORES, NivelFormacion, Persona } from '@/types';
 import { NivelBadge } from '@/components/ui/NivelBadge';
 import { FotoUpload } from '@/components/personas/FotoUpload';
-import { ChevronDown, ChevronUp, Calendar } from 'lucide-react';
+import { ChevronDown, ChevronUp, Calendar, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export interface PersonaFiles {
@@ -146,7 +146,18 @@ export function PersonaForm({ persona, onSubmit, loading }: PersonaFormProps) {
             </label>
             <div className="relative">
               <input type="date" {...register('fecha_nacimiento')} autoComplete="off" className={cn(inputClass, 'pr-10')} style={inputStyle} />
-              <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none" style={{ color: '#6B7280' }} />
+              {fechaNacimiento ? (
+                <button
+                  type="button"
+                  onClick={() => setValue('fecha_nacimiento', '')}
+                  className="absolute right-3 top-1/2 -translate-y-1/2"
+                  aria-label="Limpiar fecha"
+                >
+                  <X className="w-4 h-4" style={{ color: '#6B7280' }} />
+                </button>
+              ) : (
+                <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 pointer-events-none" style={{ color: '#6B7280' }} />
+              )}
             </div>
           </div>
 
